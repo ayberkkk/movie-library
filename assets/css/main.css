@@ -1,0 +1,122 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  overflow-y: auto;
+  z-index: 100;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+  margin-left: 30px;
+}
+
+#movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0rem, 22rem));
+  place-content: space-between space-evenly;
+  -webkit-box-align: start;
+  align-items: start;
+  gap: 4rem 2rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background-color: transparent;
+  border-radius: 0.8rem;
+  position: relative;
+  transform: scale(.8);
+  transition: .4s;
+}
+
+.movie-card img {
+  width: auto;
+  height: 38rem;
+  object-fit: cover;
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+  box-shadow: 0rem 2rem 5rem rgba(0, 0, 0, 0.2);
+}
+
+.movie-card:hover {
+  transform: scale(.9);
+}
+
+.movie-card:hover .card-body {
+  background-color: #212121;
+  color: #fff;
+}
+
+.list-group {
+  padding: 10px !important;
+}
+
+.list-group-item {
+  border: 1px solid transparent !important;
+  padding: 3px;
+  transition: cubic-bezier(0.215, 0.610, 0.355, 1);
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.list-group-item:hover {
+  border: 1px solid #212121 !important;
+}
+
+.card-body {
+  text-align: center;
+  padding: 1rem !important;
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+}
+
+.search-bar {
+  display: none;
+}
+
+.search-bar.active {
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+.search-bar input {
+  margin-left: 10px;
+}
+
+.navbar {
+  display: none !important;
+}
+
+.ml0 {
+  margin-left: 0px !important;
+  transition: .4s;
+}
+
+#openMobile,
+#closeToggle {
+  display: none;
+}
+
+@media screen and (max-width:992px) {
+  .sidebar {
+    margin-left: -100%;
+    background-color: #fff;
+  }
+
+  #openMobile,
+  #closeToggle {
+    display: block;
+  }
+}
