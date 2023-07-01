@@ -7,6 +7,8 @@ const sidebar = document.getElementById("sidebar");
 const openMobile = document.getElementById("openMobile");
 const closeToggle = document.getElementById("closeToggle");
 
+let selectedCategoryId = null;
+
 fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`)
   .then((response) => response.json())
   .then((data) => {
@@ -19,8 +21,12 @@ fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`)
       const li = document.createElement("li");
       li.textContent = category.name;
       li.classList.add("list-group-item");
+      li.setAttribute("data-id", category.id);
 
       li.addEventListener("click", () => {
+        selectedCategoryId = category.id;
+        updateCategoryActiveClass();
+
         filterMoviesByCategory(category.id);
       });
 
@@ -112,6 +118,18 @@ function createMovieCard(movie) {
   moviesElement.appendChild(movieDiv);
 }
 
+function updateCategoryActiveClass() {
+  const allListItems = document.querySelectorAll(".list-group-item");
+  allListItems.forEach((item) => item.classList.remove("active"));
+
+  const selectedCategoryLi = document.querySelector(
+    `.list-group-item[data-id="${selectedCategoryId}"]`
+  );
+  if (selectedCategoryLi) {
+    selectedCategoryLi.classList.add("active");
+  }
+}
+
 listAllMovies();
 
 searchButton.addEventListener("click", () => {
@@ -146,13 +164,6 @@ searchButton.addEventListener("click", () => {
         }
       })
       .catch((error) => console.error(error));
-  }
-});
-
-searchButton.addEventListener("click", () => {
-  searchInput.classList.toggle("active");
-  if (searchInput.classList.contains("active")) {
-    searchInput.focus();
   }
 });
 

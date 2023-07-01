@@ -1,3 +1,23 @@
+::-webkit-scrollbar-track {
+  background-color: transparent !important;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear,
+      left bottom,
+      left top,
+      color-stop(0.44, #212121),
+      color-stop(0.72, #020304),
+      color-stop(0.86, #313131));
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -9,17 +29,12 @@
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.main-content {
-  margin-left: 30px;
-}
-
 #movies {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0rem, 22rem));
+  grid-template-columns: repeat(auto-fit, minmax(0rem, calc(40% - 6rem)));
   place-content: space-between space-evenly;
   -webkit-box-align: start;
   align-items: start;
-  gap: 4rem 2rem;
 }
 
 .loading {
@@ -30,10 +45,6 @@
 }
 
 .movie-card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  background-color: transparent;
   border-radius: 0.8rem;
   position: relative;
   transform: scale(.8);
@@ -60,25 +71,34 @@
 
 .list-group {
   padding: 10px !important;
+  margin-bottom: 50px !important;
 }
 
 .list-group-item {
-  border: 1px solid transparent !important;
+  border: none !important;
+  background-color: transparent !important;
   padding: 3px;
-  transition: cubic-bezier(0.215, 0.610, 0.355, 1);
   cursor: pointer;
   border-radius: 15px;
+  transition: cubic-bezier(1, 0, 0, 1);
 }
 
 .list-group-item:hover {
-  border: 1px solid #212121 !important;
+  background-color: #313131 !important;
+  color: #fff !important;
+}
+
+.list-group-item.active {
+  background-color: #313131 !important;
 }
 
 .card-body {
+  background-color: transparent;
   text-align: center;
   padding: 1rem !important;
   border-bottom-left-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
+  transition: .4s;
 }
 
 .search-bar {
@@ -91,8 +111,8 @@
   transition: 0.3s ease-in-out;
 }
 
-.search-bar input {
-  margin-left: 10px;
+input:focus {
+  box-shadow: none !important;
 }
 
 .navbar {
@@ -109,14 +129,57 @@
   display: none;
 }
 
-@media screen and (max-width:992px) {
+@media (max-width: 768px) {
   .sidebar {
     margin-left: -100%;
     background-color: #fff;
+    transition: .4s;
+  }
+
+  .col-lg-2 {
+    padding: 10px;
+    background-color: #333333;
+  }
+
+  #openMobile {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  #closeToggle {
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: right;
+  }
+
+  .mobile-logo {
+    color: #fff;
+    margin-bottom: 0px !important;
+    margin-left: 10px;
   }
 
   #openMobile,
   #closeToggle {
     display: block;
+  }
+
+  #movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0rem, calc(60% - 6rem)));
+  }
+
+  .movie-card img {
+    width: auto;
+    height: auto;
+  }
+
+  .card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
