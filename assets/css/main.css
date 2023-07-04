@@ -29,6 +29,52 @@
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.interactive-list-item {
+  margin: 4px;
+}
+
+.btn-interactive {
+  background-color: #313131;
+  border: 1px solid transparent;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px;
+  text-decoration: none;
+  border-radius: 0.8rem;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.btn-interactive:hover {
+  background-color: transparent;
+  border: 1px solid #212121;
+  color: #212121;
+}
+
+.list-group {
+  padding: 10px !important;
+  margin-bottom: 50px !important;
+}
+
+.list-group-item {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 3px;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  transition: cubic-bezier(1, 0, 0, 1);
+}
+
+.list-group-item:hover {
+  background-color: #313131 !important;
+  color: #fff !important;
+}
+
+.list-group-item.active {
+  background-color: #313131 !important;
+}
+
+
 #movies {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0rem, calc(40% - 6rem)));
@@ -60,37 +106,11 @@
   box-shadow: 0rem 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
-.movie-card:hover {
-  transform: scale(.9);
-}
-
 .movie-card:hover .card-body {
   background-color: #212121;
   color: #fff;
 }
 
-.list-group {
-  padding: 10px !important;
-  margin-bottom: 50px !important;
-}
-
-.list-group-item {
-  border: none !important;
-  background-color: transparent !important;
-  padding: 3px;
-  cursor: pointer;
-  border-radius: 15px;
-  transition: cubic-bezier(1, 0, 0, 1);
-}
-
-.list-group-item:hover {
-  background-color: #313131 !important;
-  color: #fff !important;
-}
-
-.list-group-item.active {
-  background-color: #313131 !important;
-}
 
 .card-body {
   background-color: transparent;
@@ -105,6 +125,26 @@
   display: none;
 }
 
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50% !important;
+  background-color: #fff !important;
+  color: #f00 !important;
+  transition: .4s;
+}
+
+.favorite-button:hover {
+  background-color: rgba(255, 255, 255, 0.105);
+}
+
+.favorite-button.clicked svg {
+  animation: bounce 0.8s;
+}
+
 .search-bar.active {
   display: flex;
   align-items: center;
@@ -113,10 +153,6 @@
 
 input:focus {
   box-shadow: none !important;
-}
-
-.navbar {
-  display: none !important;
 }
 
 .ml0 {
@@ -181,5 +217,20 @@ input:focus {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
