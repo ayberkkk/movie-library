@@ -1,6 +1,6 @@
 ::-webkit-scrollbar-track {
   background-color: transparent !important;
-  border-radius: 10px;
+  border-radius: 0.8rem;
 }
 
 ::-webkit-scrollbar {
@@ -9,7 +9,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 0.8rem;
   background-image: -webkit-gradient(linear,
       left bottom,
       left top,
@@ -151,6 +151,12 @@
   transition: 0.3s ease-in-out;
 }
 
+#searchButton {
+  border: none;
+  outline: none;
+  background-color: #020304;
+}
+
 input:focus {
   box-shadow: none !important;
 }
@@ -163,6 +169,14 @@ input:focus {
 #openMobile,
 #closeToggle {
   display: none;
+}
+
+#favoritesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0rem, calc(40% - 6rem)));
+  place-content: space-between space-evenly;
+  -webkit-box-align: start;
+  align-items: start;
 }
 
 @media (max-width: 768px) {
@@ -201,7 +215,8 @@ input:focus {
     display: block;
   }
 
-  #movies {
+  #movies,
+  #favoritesList {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0rem, calc(60% - 6rem)));
   }
@@ -222,15 +237,37 @@ input:focus {
 
 
 @keyframes bounce {
-  0% {
-    transform: scale(1);
+
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
   }
 
-  50% {
-    transform: scale(1.2);
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
   }
 
-  100% {
-    transform: scale(1);
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
   }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.bounce {
+  animation-name: bounce;
 }
