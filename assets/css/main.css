@@ -75,7 +75,9 @@
 }
 
 
-#movies {
+#movies,
+#popular,
+#favoritesList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0rem, calc(40% - 6rem)));
   place-content: space-between space-evenly;
@@ -171,14 +173,6 @@ input:focus {
   display: none;
 }
 
-#favoritesList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0rem, calc(40% - 6rem)));
-  place-content: space-between space-evenly;
-  -webkit-box-align: start;
-  align-items: start;
-}
-
 @media (max-width: 768px) {
   .sidebar {
     margin-left: -100%;
@@ -216,7 +210,8 @@ input:focus {
   }
 
   #movies,
-  #favoritesList {
+  #favoritesList,
+  #popular {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0rem, calc(60% - 6rem)));
   }
@@ -250,4 +245,3 @@ input:focus {
     transform: scale(1.2);
   }
 }
-
